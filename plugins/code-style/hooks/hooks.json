@@ -3,33 +3,58 @@
     "PostToolUse": [
       {
         "matcher": "Write|Edit",
-        "command": "npx prettier --write \"$FILE_PATH\" 2>/dev/null || true",
-        "description": "Auto-format TypeScript/JavaScript files after AI writes code",
-        "if": "*.ts|*.tsx|*.js|*.jsx"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx prettier --write \"$FILE_PATH\" 2>/dev/null || true"
+          }
+        ],
+        "if": "*.ts|*.tsx|*.js|*.jsx",
+        "description": "Auto-format TypeScript/JavaScript files after AI writes code"
       },
       {
         "matcher": "Write|Edit",
-        "command": "npx stylelint --fix \"$FILE_PATH\" 2>/dev/null || npx prettier --write \"$FILE_PATH\" 2>/dev/null || true",
-        "description": "Auto-format SCSS files after AI writes code",
-        "if": "*.scss|*.sass"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx stylelint --fix \"$FILE_PATH\" 2>/dev/null || npx prettier --write \"$FILE_PATH\" 2>/dev/null || true"
+          }
+        ],
+        "if": "*.scss|*.sass",
+        "description": "Auto-format SCSS files after AI writes code"
       },
       {
         "matcher": "Write|Edit",
-        "command": "npx eslint --fix \"$FILE_PATH\" 2>/dev/null || true",
-        "description": "Auto-fix ESLint issues after AI writes code",
-        "if": "*.ts|*.tsx|*.js|*.jsx"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx eslint --fix \"$FILE_PATH\" 2>/dev/null || true"
+          }
+        ],
+        "if": "*.ts|*.tsx|*.js|*.jsx",
+        "description": "Auto-fix ESLint issues after AI writes code"
       },
       {
         "matcher": "Write|Edit",
-        "command": "npx tsc --noEmit --pretty false 2>/dev/null || true",
-        "description": "Type-check after TypeScript edits",
-        "if": "*.ts|*.tsx"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx tsc --noEmit --pretty false 2>/dev/null || true"
+          }
+        ],
+        "if": "*.ts|*.tsx",
+        "description": "Type-check after TypeScript edits"
       }
     ],
     "PreToolUse": [
       {
         "matcher": "Write",
-        "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const c=i.tool_input?.content||'';const lines=c.split('\\n').length;if(lines>800){console.error('[Hook] BLOCKED: File exceeds 800 lines ('+lines+' lines)');console.error('[Hook] Split into smaller modules');process.exit(2)}console.log(d)})\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const c=i.tool_input?.content||'';const lines=c.split('\\n').length;if(lines>800){console.error('[Hook] BLOCKED: File exceeds 800 lines ('+lines+' lines)');console.error('[Hook] Split into smaller modules');process.exit(2)}console.log(d)})\""
+          }
+        ],
         "description": "Block writes that exceed 800 lines"
       }
     ]
