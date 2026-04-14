@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "claude-code-plugins",
+  "name": "claude-code-dev-plugins",
   "description": "Personal Claude Code plugin collection for TypeScript CLI development workflows",
   "owner": {
     "name": "artorias"
