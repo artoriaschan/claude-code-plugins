@@ -48,6 +48,57 @@
           "SubagentStop — verifies generated code follows conventions after subagent execution"
         ]
       }
+    },
+    {
+      "name": "code-style",
+      "description": "Enforce personal coding style conventions for AI-generated code. Strict naming (camelCase/PascalCase/kebab-case), import order, file organization, comment guidelines, and error handling rules across TypeScript, React, Vue, and SCSS projects.",
+      "category": "development",
+      "source": "./plugins/code-style",
+      "tags": [
+        "code-style",
+        "naming",
+        "typescript",
+        "react",
+        "vue",
+        "scss",
+        "linting",
+        "formatting",
+        "error-handling"
+      ],
+      "components": {
+        "skills": [
+          {
+            "name": "code-style-principles",
+            "description": "Universal coding style principles with good vs bad examples — naming conventions, file organization, comment guidelines, error handling best practices"
+          },
+          {
+            "name": "ts-style",
+            "description": "TypeScript style guide — types, import order, file structure, error handling conventions"
+          },
+          {
+            "name": "react-style",
+            "description": "React style guide — component patterns, hooks usage, error boundaries, prop typing"
+          },
+          {
+            "name": "vue-style",
+            "description": "Vue style guide — composition API, component patterns, props/emits typing, error handling"
+          },
+          {
+            "name": "scss-style",
+            "description": "SCSS style guide — naming conventions, nesting limits, variable tokens, file organization"
+          }
+        ],
+        "agents": [
+          {
+            "name": "code-style-reviewer",
+            "description": "Deep code style review agent — checks naming, import order, file organization, comments, error handling, and TypeScript compliance before commits"
+          }
+        ],
+        "hooks": [
+          "PostToolUse (Write/Edit) — auto-format TS/JS with prettier, SCSS with stylelint, auto-fix ESLint issues, type-check with tsc",
+          "PreToolUse (Write) — block file writes exceeding 800 lines"
+        ]
+      }
     }
   ]
 }

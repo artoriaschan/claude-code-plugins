@@ -10,31 +10,23 @@ A personal plugin management project for Claude Code. It hosts custom plugins th
 2. **Personal conventions**: Enforce consistent code styles and project structures across all generated projects
 3. **Iterative improvement**: Plugins evolve based on daily usage — new skills and agents are added as needs arise
 
-## Current State
+## Design Principles
 
-One active plugin exists:
+### Per-Plugin Independence
 
-### cli-builder
+Each plugin lives under `plugins/<name>/` with its own manifest. Plugins are independently developable, testable, and shareable.
 
-TypeScript CLI tool builder with:
-- **Interactive scaffolding**: Generates complete monorepo projects (pnpm + Commander + Zod + Chalk + tsup + Vitest)
-- **Code style checking**: Validates projects against coding-plans-statusline conventions
-- **Command template generation**: Creates individual command files with proper structure
-- **Auto-validation**: Hooks check code style on file write and after subagent execution
+### Auto-Discovery Over Explicit Registration
 
-## Design Decisions
+Skills, agents, and hooks are auto-discovered from standard directories. Manifest paths override auto-discovery only when needed.
 
-### Single Root Manifest
+### Fail-Graceful Hooks
 
-All plugins share one `.claude-plugin/plugin.json` at the project root rather than each plugin having its own manifest. This simplifies local development — one `--plugin-dir` flag loads everything.
+All hooks use `|| true` to prevent blocking AI work. Hooks assist, never obstruct.
 
-### Plugin Directory Structure
+### Convention as Code
 
-Plugins live under `plugins/<name>/` with all components (skills, agents, hooks) nested inside. The manifest points to these subdirectories via relative paths.
-
-### Convention Reference
-
-The `cli-builder` plugin derives its code conventions from the `coding-plans-statusline` project (a real CLI tool built with TypeScript ESM, Commander, Zod, etc.). These conventions are captured in `skills/cli-create/references/tech-stack.md` and enforced by `skills/cli-check`.
+Coding conventions from the `coding-plans-statusline` project are captured as rules and enforced automatically — not documented and forgotten.
 
 ## Future Plans
 

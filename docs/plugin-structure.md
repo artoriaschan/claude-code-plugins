@@ -6,6 +6,8 @@ Each plugin lives under `plugins/<name>/`:
 
 ```
 plugins/<name>/
+├── .claude-plugin/
+│   └── plugin.json        # Plugin manifest (per-plugin)
 ├── README.md              # Plugin documentation
 ├── skills/                # Auto-activating skills
 │   └── <skill-name>/
@@ -15,25 +17,33 @@ plugins/<name>/
 │       └── scripts/       # Utility scripts
 ├── agents/                # Subagent definitions
 │   └── <agent-name>.md    # Agent with frontmatter + system prompt
-└── hooks/
-    └── hooks.json          # Event handler configuration
+├── hooks/
+│   └── hooks.json         # Event handler configuration
+└── rules/                 # Coding style rules (optional)
+    └── <language>/
+        └── *.md           # Rules files
 ```
 
 ## Manifest (.claude-plugin/plugin.json)
 
-Located at the project root, shared by all plugins:
+Each plugin has its own manifest at `plugins/<name>/.claude-plugin/plugin.json`:
 
 ```json
 {
-  "name": "cli-builder",
+  "name": "code-style",
   "version": "0.1.0",
-  "description": "Brief description",
-  "author": { "name": "artorias" },
-  "skills": "./plugins/cli-builder/skills",
-  "agents": "./plugins/cli-builder/agents",
-  "hooks": "./plugins/cli-builder/hooks/hooks.json"
+  "description": "Enforce personal coding style conventions.",
+  "author": { "name": "artorias" }
 }
 ```
+
+Skills, agents, and hooks are **auto-discovered** from standard directories:
+
+| Component | Auto-discovery path |
+|-----------|---------------------|
+| Skills | `plugins/<name>/skills/<skill-name>/SKILL.md` |
+| Agents | `plugins/<name>/agents/<agent-name>.md` |
+| Hooks | `plugins/<name>/hooks/hooks.json` |
 
 ### Manifest Fields
 
@@ -43,9 +53,9 @@ Located at the project root, shared by all plugins:
 | `version` | No | Semver version |
 | `description` | No | One-line purpose summary |
 | `author` | No | Author info |
-| `skills` | No | Relative path to skills directory |
-| `agents` | No | Relative path or array of agent paths |
-| `hooks` | No | Path to hooks.json |
+| `skills` | No | Relative path to skills directory (overrides auto-discovery) |
+| `agents` | No | Relative path or array of agent paths (overrides auto-discovery) |
+| `hooks` | No | Path to hooks.json (overrides auto-discovery) |
 
 ### Path Rules
 
@@ -94,3 +104,31 @@ capabilities:
 ### Available Events
 
 `PreToolUse`, `PostToolUse`, `Stop`, `SubagentStop`, `SessionStart`, `SessionEnd`, `UserPromptSubmit`, `PreCompact`, `Notification`
+
+## Rules (Optional)
+
+Plugins can ship coding style rules under `plugins/<name>/rules/`. These must be symlinked to `~/.claude/rules/` for Claude Code to auto-load them:
+
+```bash
+# Symlink all rules from a plugin
+./install.sh
+```
+
+Rules follow a layered structure:
+
+```
+rules/
+├── common/              # Cross-language principles
+│   ├── coding-style.md  # Naming, immutability, errors, comments
+│   ├── patterns.md      # Design patterns
+│   └── testing.md       # Testing conventions
+├── <language>/          # Language-specific rules
+│   ├── coding-style.md  # Language conventions
+│   ├── patterns.md      # Language patterns
+│   └── hooks.md         # Language-specific hooks
+└── <framework>/         # Framework-specific rules
+    ├── coding-style.md
+    └── patterns.md
+```
+
+Rules use relative path references (`../common/xxx.md`) to cross-reference shared principles.
