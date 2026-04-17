@@ -41,7 +41,6 @@ See [docs/development-workflow.md](docs/development-workflow.md) for detailed wo
 | Project overview and goals | [docs/project-overview.md](docs/project-overview.md) |
 | Plugin structure and manifest format | [docs/plugin-structure.md](docs/plugin-structure.md) |
 | Plugin development workflow | [docs/development-workflow.md](docs/development-workflow.md) |
-| Installation and usage | [docs/installation.md](docs/installation.md) |
 
 ## License
 
