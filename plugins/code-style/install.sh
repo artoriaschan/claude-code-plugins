@@ -36,7 +36,7 @@ else
     mkdir -p "$TMP_DIR/$dir"
     # Get file list from GitHub API
     API_URL="https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PLUGIN_PATH}/${dir}?ref=${BRANCH}"
-    files=$(curl -fsSL "$API_URL" | grep -o '"name":"[^"]*\.md"' | grep -o '"[^"]*\.md"$' | tr -d '"' || true)
+    files=$(curl -fsSL "$API_URL" | grep -oP '"name":\s*"\K[^"]+\.md' || true)
     for f in $files; do
       curl -fsSL "${RULES_URL}/${dir}/${f}" -o "$TMP_DIR/$dir/$f" || echo "Warning: failed to download ${dir}/${f}"
     done
