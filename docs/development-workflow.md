@@ -22,6 +22,22 @@
 2. Write frontmatter with description and capabilities
 3. Write system prompt with trigger conditions and output format
 
+## Documentation Maintenance
+
+**When modifying plugin files, update corresponding docs:**
+
+| Change Location | Docs to Update |
+|-----------------|----------------|
+| `plugins/<name>/skills/`, `agents/`, `rules/`, `install.sh` | `plugins/<name>/README.md` |
+| `plugins/<name>/README.md` | `README.md` (root) if the plugin's purpose/components changed |
+| `README.md` (root) | `CLAUDE.md` and `docs/installation.md` if install commands or plugin list changed |
+
+**Rules:**
+- Document **only existing features** — never reference removed or deleted functionality
+- Keep component counts accurate (skills, agents, rules)
+- Install commands must match current `install.sh` behavior
+- Update descriptions to reflect current behavior, not legacy behavior
+
 ## Testing
 
 ```bash
