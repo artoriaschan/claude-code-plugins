@@ -4,14 +4,16 @@
 
 This project manages Claude Code plugins for personal development workflows. Each plugin under `plugins/` is independently maintained with its own manifest and components.
 
+**Repository:** https://github.com/artoriaschan/claude-code-dev-plugins
+
 ## Installation
 
 ```bash
 # Install via /plugin command in Claude Code
 /plugin install --plugin-dir /home/artorias/workspaces/person/claude-code-plugins
 
-# Or symlink rules manually
-cd plugins/code-style && ./install.sh
+# For code-style rules (remote install, no clone needed)
+curl -fsSL https://raw.githubusercontent.com/artoriaschan/claude-code-dev-plugins/main/plugins/code-style/install.sh | bash
 ```
 
 ## Quick Navigation
@@ -28,7 +30,7 @@ cd plugins/code-style && ./install.sh
 
 | Plugin | Components | Purpose |
 |--------|-----------|---------|
-| `cli-builder` | 2 skills | TypeScript CLI project scaffolding and command template generation |
+| `cli-builder` | 2 skills | TypeScript CLI project scaffolding (with simple mode) and command template generation |
 | `code-style` | 5 skills, 1 agent, 11 rules | Enforce personal coding style conventions for AI-generated code |
 
 ## Key Conventions
@@ -37,3 +39,4 @@ cd plugins/code-style && ./install.sh
 - Plugin files under `plugins/<name>/` — self-contained and independently deployable
 - Skills, agents auto-discovered from standard directories
 - Code conventions use modern TypeScript patterns (ESM, strict mode)
+- Rules installed via `install.sh` — copies to ~/.claude/rules/code-style/

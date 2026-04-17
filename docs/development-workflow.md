@@ -5,7 +5,8 @@
 1. Create directory under `plugins/<name>/`
 2. Add skills, agents as needed
 3. Register component paths in `.claude-plugin/plugin.json`
-4. Test with `cc --plugin-dir /home/artorias/workspaces/person/claude-code-plugins`
+4. If shipping rules, create `install.sh` with safety checks (idempotent symlink creation)
+5. Test with `cc --plugin-dir /home/artorias/workspaces/person/claude-code-plugins`
 
 ## Creating a New Skill
 

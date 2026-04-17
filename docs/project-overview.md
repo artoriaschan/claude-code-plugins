@@ -27,4 +27,5 @@ Coding conventions for generated projects are captured as rules and enforced aut
 ## Future Plans
 
 - Add more plugins as development needs arise
-- Potentially publish plugins to the Claude Code marketplace
+- Plugins published to Claude Code marketplace under `artoriaschan/claude-code-dev-plugins`
+- Lightweight skill definitions with detailed rules in `rules/` to avoid content duplication

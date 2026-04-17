@@ -6,7 +6,7 @@ Personal Claude Code plugin collection.
 
 | Plugin | Purpose | Details |
 |--------|---------|---------|
-| **cli-builder** | TypeScript CLI project scaffolding and command templates | [plugins/cli-builder/README.md](plugins/cli-builder/README.md) |
+| **cli-builder** | TypeScript CLI project scaffolding (with simple mode) and command templates | [plugins/cli-builder/README.md](plugins/cli-builder/README.md) |
 | **code-style** | Coding style conventions for TypeScript, React, Vue, and SCSS | [plugins/code-style/README.md](plugins/code-style/README.md) |
 
 ## Quick Start
@@ -25,10 +25,10 @@ Or from the CLI:
 claude plugin install github:artoriaschan/claude-code-dev-plugins
 ```
 
-> **Note:** For `code-style` plugin, link rules after installation:
+> **Note:** For `code-style` plugin, install rules after installation:
 >
 > ```bash
-> ln -s "$(pwd)/plugins/code-style/rules" ~/.claude/rules/code-style
+> curl -fsSL https://raw.githubusercontent.com/artoriaschan/claude-code-dev-plugins/main/plugins/code-style/install.sh | bash
 > ```
 
 ## Adding a New Plugin

@@ -5,25 +5,30 @@ Enforce personal coding style conventions for AI-generated code across TypeScrip
 ## Features
 
 - **Rules** - Always-loaded coding style rules for naming, file organization, comments, and error handling
-- **Skills** - Detailed style guides with "good vs bad" examples, triggered automatically or manually
+- **Skills** - Lightweight trigger definitions; detailed rules live in `rules/` to avoid content duplication
 - **Agent** - Code style reviewer for deep review before commits
 
 ## Installation
 
-### 1. Link Rules
+### 1. Install Rules
 
-Rules need to be linked to `~/.claude/rules/code-style/` for Claude Code to auto-load them:
+Rules are copied to `~/.claude/rules/code-style/` for Claude Code to auto-load them:
+
+**Remote install (recommended, no clone needed):**
 
 ```bash
-# Run the install script from this plugin directory
+curl -fsSL https://raw.githubusercontent.com/artoriaschan/claude-code-dev-plugins/main/plugins/code-style/install.sh | bash
+```
+
+**Local install (from plugin directory):**
+
+```bash
 ./install.sh
 ```
 
-Or manually:
-
-```bash
-ln -s "$(pwd)/rules" ~/.claude/rules/code-style
-```
+The install script:
+- Automatically removes existing rules before installing fresh copy
+- Detects local vs remote mode automatically
 
 ### 2. Auto-Discovery
 

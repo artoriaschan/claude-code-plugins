@@ -17,6 +17,7 @@ plugins/<name>/
 │       └── scripts/       # Utility scripts
 ├── agents/                # Subagent definitions
 │   └── <agent-name>.md    # Agent with frontmatter + system prompt
+├── install.sh             # Optional setup script (downloads or copies rules)
 └── rules/                 # Coding style rules (optional)
     └── <language>/
         └── *.md           # Rules files
@@ -29,9 +30,9 @@ Each plugin has its own manifest at `plugins/<name>/.claude-plugin/plugin.json`:
 ```json
 {
   "name": "code-style",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "description": "Enforce personal coding style conventions.",
-  "author": { "name": "artorias" }
+  "author": { "name": "artoriaschan" }
 }
 ```
 
@@ -88,12 +89,16 @@ capabilities:
 
 ## Rules (Optional)
 
-Plugins can ship coding style rules under `plugins/<name>/rules/`. These must be symlinked to `~/.claude/rules/` for Claude Code to auto-load them:
+Plugins can ship coding style rules under `plugins/<name>/rules/`. The `install.sh` script copies them to `~/.claude/rules/` for Claude Code to auto-load them:
 
 ```bash
-# Symlink all rules from a plugin
-./install.sh
+# Remote install (no clone needed)
+curl -fsSL https://raw.githubusercontent.com/artoriaschan/claude-code-dev-plugins/main/plugins/code-style/install.sh | bash
 ```
+
+The install script:
+- Detects local vs remote mode automatically
+- Removes existing rules before installing a fresh copy
 
 Rules follow a layered structure:
 

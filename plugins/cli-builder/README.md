@@ -16,3 +16,5 @@ CLI tool builder plugin for Claude Code — TypeScript CLI project scaffolding a
 Generated projects use:
 - TypeScript ESM + Commander + Zod + Chalk 5.x + tsup + Vitest + @clack/prompts
 - pnpm workspace + ESLint + Sheriff + Prettier + Husky + Changesets
+
+**Simple mode**: Use `simple: true` flag to skip complex tooling (ESLint, Sheriff, Changesets) for lightweight projects.

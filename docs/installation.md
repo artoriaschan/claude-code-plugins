@@ -12,11 +12,29 @@ This loads all plugins from this project into your Claude Code instance.
 
 ### Manual Rule Installation
 
-Some plugins (like `code-style`) ship coding style rules that must be symlinked to `~/.claude/rules/` for auto-loading:
+Some plugins (like `code-style`) ship coding style rules that are copied to `~/.claude/rules/` for auto-loading:
+
+**Remote install (recommended):**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/artoriaschan/claude-code-dev-plugins/main/plugins/code-style/install.sh | bash
+```
+
+**Local install (from plugin directory):**
 
 ```bash
 cd plugins/code-style && ./install.sh
 ```
+
+**Local install (from repo root):**
+
+```bash
+bash plugins/code-style/install.sh
+```
+
+The install script:
+- Detects local vs remote mode automatically
+- Removes existing rules before installing fresh copy
 
 Skills and agents are auto-discovered — no manual setup required.
 
