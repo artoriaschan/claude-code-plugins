@@ -1,6 +1,7 @@
 # Common Testing Standards
 
 > Testing principles applicable to all projects.
+> Note: The global rules in `~/.claude/rules/zh/testing.md` define the full testing standards. This file provides a condensed reference for style-related testing requirements.
 
 ## Minimum Test Coverage: 80%
 

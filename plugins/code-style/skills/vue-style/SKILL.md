@@ -15,21 +15,11 @@ Enforces strict Vue coding conventions for AI-generated code.
 - User calls `/vue-style`
 - Generating Vue components
 
-## Composition API
+## Rules
 
-- Always use `<script setup lang="ts">`
-- Type-safe props with `defineProps<Interface>()`
-- Type-safe emits with `defineEmits<Interface>()`
+See [rules/vue/coding-style.md](../../rules/vue/coding-style.md) for full details including:
 
-## Naming
-
-- Components: PascalCase
-- Events: kebab-case
-- Composables: `use` prefix
-- Files: kebab-case
-
-## Error Boundary
-
-Required via `app.config.errorHandler` or `onErrorCaptured`.
-
-See [rules/vue/coding-style.md](../../rules/vue/coding-style.md) for full details.
+- **Composition API**: Always use `<script setup lang="ts">`
+- **Props/Emits**: Type-safe with `defineProps<Interface>()` and `defineEmits<Interface>()`
+- **Naming**: Components PascalCase, events kebab-case, composables `use` prefix
+- **Error Boundary**: `app.config.errorHandler` or `onErrorCaptured`

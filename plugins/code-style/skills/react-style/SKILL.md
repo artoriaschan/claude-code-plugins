@@ -15,20 +15,11 @@ Enforces strict React coding conventions for AI-generated code.
 - User calls `/react-style`
 - Generating React components
 
-## Component Structure
+## Rules
 
-- Split: component logic + styles + utilities
-- Props typed with `interface`
-- No `React.FC` unless necessary
+See [rules/react/coding-style.md](../../rules/react/coding-style.md) for full details including:
 
-## Hooks Rules
-
-- `use` prefix always required
-- One concern per hook
-- Top-level calls only
-
-## Error Boundary
-
-Required for all React apps.
-
-See [rules/react/coding-style.md](../../rules/react/coding-style.md) for full details.
+- **Component structure**: Split component logic + styles + utilities
+- **Hooks**: `use` prefix, single concern, top-level only
+- **Props**: Typed with `interface`, no `React.FC` unless necessary
+- **Error Boundary**: Required for all React apps

@@ -15,22 +15,11 @@ Enforces strict SCSS coding conventions for AI-generated code.
 - User calls `/scss-style`
 - Generating SCSS styles
 
-## Naming
+## Rules
 
-- CSS classes: kebab-case
-- Variables: kebab-case with `$` prefix
-- Mixins: kebab-case
-- Files: kebab-case
+See [rules/scss/coding-style.md](../../rules/scss/coding-style.md) for full details including:
 
-## Nesting
-
-- Maximum 3 levels deep
-- Use `&` for BEM modifiers
-
-## Organization
-
-- Tokens → Mixins → Component styles
-- Use CSS custom properties for design tokens
-- Consistent breakpoint system for media queries
-
-See [rules/scss/coding-style.md](../../rules/scss/coding-style.md) for full details.
+- **Naming**: Classes/variables/mixins kebab-case
+- **Nesting**: Maximum 3 levels deep, use `&` for modifiers
+- **Organization**: Tokens → Mixins → Component styles
+- **Variables**: Use CSS custom properties for design tokens

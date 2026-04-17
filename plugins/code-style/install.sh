@@ -15,10 +15,13 @@ if [ ! -d "$RULES_DIR" ]; then
   exit 1
 fi
 
-# Remove existing link/target if present
-if [ -L "$TARGET_DIR" ] || [ -d "$TARGET_DIR" ]; then
-  echo "Removing existing target: $TARGET_DIR"
-  rm -rf "$TARGET_DIR"
+# Remove existing symlink if present
+if [ -L "$TARGET_DIR" ]; then
+  echo "Removing existing symlink: $TARGET_DIR"
+  rm "$TARGET_DIR"
+elif [ -e "$TARGET_DIR" ]; then
+  echo "Error: $TARGET_DIR already exists and is not a symlink. Remove it manually first."
+  exit 1
 fi
 
 # Create parent directory if needed
