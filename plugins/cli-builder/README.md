@@ -1,6 +1,6 @@
 # cli-builder
 
-CLI tool builder plugin for Claude Code — TypeScript CLI project scaffolding, code style checking, and command template generation following coding-plans-statusline conventions.
+CLI tool builder plugin for Claude Code — TypeScript CLI project scaffolding and command template generation following modern ESM conventions.
 
 ## Components
 
@@ -9,30 +9,7 @@ CLI tool builder plugin for Claude Code — TypeScript CLI project scaffolding, 
 | Skill | Trigger | Purpose |
 |-------|---------|---------|
 | `cli-create` | "create a CLI", "scaffold a CLI project" | Interactive CLI project creation with TypeScript |
-| `cli-check` | "check CLI code style", "lint my CLI project" | Validate CLI projects against code conventions |
 | `cli-add-command` | "add a command", "create a new CLI command" | Generate command template files |
-
-### Agents
-
-| Agent | Purpose |
-|-------|---------|
-| `cli-validator` | Automatically validates generated code against conventions |
-
-## Settings
-
-Configure defaults in `~/.claude/plugins/cli-builder.local.md`:
-
-```markdown
----
-defaultIndentation: 4
-defaultQuoteStyle: single
-defaultLineWidth: 100
-enforceBarrelExports: true
-enforceTestNaming: true
----
-```
-
-See README for full settings reference.
 
 ## Tech Stack
 

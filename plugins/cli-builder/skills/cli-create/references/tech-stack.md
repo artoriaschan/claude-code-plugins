@@ -1,6 +1,6 @@
 # Tech Stack & Code Conventions
 
-Based on coding-plans-statusline project conventions. All generated CLI projects MUST follow these conventions.
+Industry-standard conventions for building modern TypeScript CLI applications. All generated CLI projects MUST follow these conventions.
 
 ## Core Technologies
 
@@ -8,7 +8,7 @@ Based on coding-plans-statusline project conventions. All generated CLI projects
 |------------|---------|---------|-----------|
 | Node.js | >=18.0.0 (20.x LTS recommended) | Runtime | LTS stability, native ESM support |
 | TypeScript | 5.4.x+ | Language | Strict type checking, modern ESM support |
-| pnpm | 9.x+ | Package Manager | Fast installs, strict peer deps, workspace-native |
+| pnpm | 9.x+ | Package Manager | Fast installs, strict peer deps |
 | Commander | 13.x | CLI Framework | Mature, lightweight, excellent TS support, auto-generated help |
 | Chalk | 5.x | ANSI Colors | ESM-only, minimal overhead, chainable API |
 | Zod | 3.24.x | Schema Validation | TypeScript-first, runtime validation, excellent errors |
@@ -19,8 +19,14 @@ Based on coding-plans-statusline project conventions. All generated CLI projects
 |------------|---------|---------|
 | tsup | 8.x | Bundler — Zero-config TypeScript Bundling, ESM output |
 | tsx | 4.x | TypeScript Execution — Run TS directly in dev, ESM-native |
-| Changesets | 2.x | Version Management — Fixed mode (all packages share version) |
+| Changesets | 2.x | Version Management — Fixed mode (monorepo) / normal mode (simple) |
 | Vitest | 3.x+ | Testing — ESM-native, TypeScript-first, faster than Jest |
+
+### Monorepo-Only Infrastructure
+
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Turborepo | 2.x | Build orchestration with caching |
 
 ## Supporting Libraries
 
@@ -30,12 +36,13 @@ Based on coding-plans-statusline project conventions. All generated CLI projects
 
 ## Development Tools
 
-| Tool | Purpose |
-|------|---------|
-| ESLint 10.x + typescript-eslint + Sheriff 0.19.x | Linting with module boundary enforcement |
-| Prettier 3.x | Code formatting |
-| Turborepo 2.x | Build orchestration with caching |
-| Husky 9.x + lint-staged 16.x | Git hooks for pre-commit checks |
+| Tool | Purpose | Scope |
+|------|---------|-------|
+| ESLint 10.x + typescript-eslint | Linting with type checking | Both |
+| Prettier 3.x | Code formatting | Both |
+| Turborepo 2.x | Build orchestration with caching | Monorepo only |
+| Sheriff 0.19.x | Module boundary enforcement | Monorepo only |
+| Husky 9.x + lint-staged 16.x | Git hooks for pre-commit checks | Both |
 
 ## What NOT to Use
 
@@ -49,12 +56,10 @@ Based on coding-plans-statusline project conventions. All generated CLI projects
 | oclif | Overkill for simple CLI, large bundle | Commander |
 | Joi | Large bundle, CommonJS default, less TS-native | Zod |
 
-## Code Style Rules
+## Project Conventions
 
-- Single quotes for strings
-- 100 character line width
-- 4-space indentation
-- Barrel exports enforced via Sheriff
+- TypeScript ESM only (`"type": "module"`)
+- Barrel exports (simple: `src/index.ts`, monorepo: `packages/cli/src/index.ts`)
 - `.spec.ts` naming convention for tests
 - TypeScript strict mode enabled
 
@@ -65,6 +70,8 @@ Based on coding-plans-statusline project conventions. All generated CLI projects
 - `domain/` — Business logic and core types
 
 ## Package.json Scripts Template
+
+### Monorepo
 
 ```json
 {
@@ -78,6 +85,27 @@ Based on coding-plans-statusline project conventions. All generated CLI projects
     "lint": "pnpm lint:eslint && pnpm lint:sheriff",
     "lint:eslint": "eslint packages/*/src/**/*.ts",
     "lint:sheriff": "sheriff verify",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish"
+  }
+}
+```
+
+### Simple
+
+```json
+{
+  "scripts": {
+    "prepare": "husky",
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "dev": "tsx src/index.ts",
+    "test": "vitest",
+    "test:run": "vitest --run",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint src/**/*.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "changeset": "changeset",

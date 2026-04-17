@@ -28,7 +28,7 @@ cd plugins/code-style && ./install.sh
 
 | Plugin | Components | Purpose |
 |--------|-----------|---------|
-| `cli-builder` | 3 skills, 1 agent | TypeScript CLI project scaffolding and code style checking |
+| `cli-builder` | 2 skills | TypeScript CLI project scaffolding and command template generation |
 | `code-style` | 5 skills, 1 agent, 11 rules | Enforce personal coding style conventions for AI-generated code |
 
 ## Key Conventions
@@ -36,4 +36,4 @@ cd plugins/code-style && ./install.sh
 - Each plugin has its own `.claude-plugin/plugin.json` manifest
 - Plugin files under `plugins/<name>/` — self-contained and independently deployable
 - Skills, agents auto-discovered from standard directories
-- Code conventions follow coding-plans-statusline project patterns (TypeScript ESM, single quotes, 4-space indent)
+- Code conventions use modern TypeScript patterns (ESM, strict mode)

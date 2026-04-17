@@ -1,8 +1,18 @@
 {
   "name": "cli-builder",
-  "version": "0.1.1",
-  "description": "CLI tool builder for TypeScript — interactive scaffolding, code style checking, and command template generation following coding-plans-statusline conventions",
+  "version": "0.1.2",
+  "description": "CLI tool builder for TypeScript — interactive scaffolding and command template generation following modern ESM conventions",
   "author": {
     "name": "artoriaschan"
-  }
+  },
+  "skills": [
+    {
+      "name": "cli-create",
+      "description": "Interactive TypeScript CLI project creation — supports monorepo and simple structures with Commander, Zod, Chalk, and full tooling"
+    },
+    {
+      "name": "cli-add-command",
+      "description": "Command template generation — creates individual command files with Commander definition, Zod validation, Chalk output, barrel exports, and test stubs"
+    }
+  ]
 }

@@ -1,6 +1,6 @@
 ---
 name: cli-add-command
-description: This skill should be used when the user asks to "add a command", "create a new CLI command", "generate a command template", "add subcommand to CLI", "scaffold a new command", or mentions adding new commands to an existing TypeScript CLI project. Generates command template files following coding-plans-statusline conventions.
+description: Activate when the user requests adding a command to an existing TypeScript CLI project. Triggers: "add a command", "new subcommand", "create CLI command", "add command to CLI". Generates command file with Commander, Zod, Chalk, updates barrel exports and bootstrap.
 version: 0.1.0
 ---
 

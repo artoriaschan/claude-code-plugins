@@ -6,7 +6,7 @@ Personal Claude Code plugin collection.
 
 | Plugin | Purpose | Details |
 |--------|---------|---------|
-| **cli-builder** | TypeScript CLI project scaffolding and code style enforcement | [plugins/cli-builder/README.md](plugins/cli-builder/README.md) |
+| **cli-builder** | TypeScript CLI project scaffolding and command templates | [plugins/cli-builder/README.md](plugins/cli-builder/README.md) |
 | **code-style** | Coding style conventions for TypeScript, React, Vue, and SCSS | [plugins/code-style/README.md](plugins/code-style/README.md) |
 
 ## Quick Start

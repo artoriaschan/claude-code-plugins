@@ -52,8 +52,6 @@ export function register<CommandName>(program: Command) {
 
 - File name: kebab-case (`my-command.ts`)
 - Function name: PascalCase (`registerMyCommand`)
-- Single quotes for strings
-- 4-space indentation
 - `.js` extension in imports
 - Zod schema for all input validation
 - Chalk for colored output

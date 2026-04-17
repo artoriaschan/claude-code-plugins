@@ -22,7 +22,7 @@ Skills and agents are auto-discovered from standard directories. Manifest paths 
 
 ### Convention as Code
 
-Coding conventions from the `coding-plans-statusline` project are captured as rules and enforced automatically — not documented and forgotten.
+Coding conventions for generated projects are captured as rules and enforced automatically — not documented and forgotten.
 
 ## Future Plans
 
