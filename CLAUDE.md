@@ -9,8 +9,10 @@ This project manages Claude Code plugins for personal development workflows. Eac
 ## Installation
 
 ```bash
-# Install via /plugin command in Claude Code
-/plugin install --plugin-dir /home/artorias/workspaces/person/claude-code-plugins
+# Add marketplace, then install individual plugins
+/plugin marketplace add artoriaschan/claude-code-dev-plugins
+/plugin install cli-builder
+/plugin install code-style
 
 # For code-style rules (remote install, no clone needed)
 curl -fsSL https://raw.githubusercontent.com/artoriaschan/claude-code-dev-plugins/main/plugins/code-style/install.sh | bash
