@@ -6,18 +6,6 @@ This project manages Claude Code plugins for personal development workflows. Eac
 
 **Repository:** https://github.com/artoriaschan/claude-code-dev-plugins
 
-## Installation
-
-```bash
-# Add marketplace, then install individual plugins
-/plugin marketplace add artoriaschan/claude-code-dev-plugins
-/plugin install cli-builder
-/plugin install code-style
-
-# For code-style rules (remote install, no clone needed)
-curl -fsSL https://raw.githubusercontent.com/artoriaschan/claude-code-dev-plugins/main/plugins/code-style/install.sh | bash
-```
-
 ## Quick Navigation
 
 | Task | Reference |
@@ -40,4 +28,3 @@ curl -fsSL https://raw.githubusercontent.com/artoriaschan/claude-code-dev-plugin
 - Plugin files under `plugins/<name>/` — self-contained and independently deployable
 - Skills, agents auto-discovered from standard directories
 - Code conventions use modern TypeScript patterns (ESM, strict mode)
-- Rules installed via `install.sh` — copies to ~/.claude/rules/code-style/
