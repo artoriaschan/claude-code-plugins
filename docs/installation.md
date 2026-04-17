@@ -18,7 +18,7 @@ Some plugins (like `code-style`) ship coding style rules that must be symlinked 
 cd plugins/code-style && ./install.sh
 ```
 
-Skills, agents, and hooks are auto-discovered — no manual setup required.
+Skills and agents are auto-discovered — no manual setup required.
 
 ## Available Plugins
 

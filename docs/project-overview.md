@@ -18,11 +18,7 @@ Each plugin lives under `plugins/<name>/` with its own manifest. Plugins are ind
 
 ### Auto-Discovery Over Explicit Registration
 
-Skills, agents, and hooks are auto-discovered from standard directories. Manifest paths override auto-discovery only when needed.
-
-### Fail-Graceful Hooks
-
-All hooks use `|| true` to prevent blocking AI work. Hooks assist, never obstruct.
+Skills and agents are auto-discovered from standard directories. Manifest paths override auto-discovery only when needed.
 
 ### Convention as Code
 

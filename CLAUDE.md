@@ -20,7 +20,7 @@ cd plugins/code-style && ./install.sh
 |------|-----------|
 | What is this project and why does it exist | `docs/project-overview.md` |
 | Plugin directory layout and manifest format | `docs/plugin-structure.md` |
-| How to create plugins, skills, agents, hooks | `docs/development-workflow.md` |
+| How to create plugins, skills, agents | `docs/development-workflow.md` |
 | How to install and use plugins | `docs/installation.md` |
 | Coding conventions enforced by plugins | `docs/coding-conventions.md` |
 
@@ -28,12 +28,12 @@ cd plugins/code-style && ./install.sh
 
 | Plugin | Components | Purpose |
 |--------|-----------|---------|
-| `cli-builder` | 3 skills, 1 agent, 1 hook | TypeScript CLI project scaffolding and code style checking |
-| `code-style` | 5 skills, 1 agent, 4 hooks, 11 rules | Enforce personal coding style conventions for AI-generated code |
+| `cli-builder` | 3 skills, 1 agent | TypeScript CLI project scaffolding and code style checking |
+| `code-style` | 5 skills, 1 agent, 11 rules | Enforce personal coding style conventions for AI-generated code |
 
 ## Key Conventions
 
 - Each plugin has its own `.claude-plugin/plugin.json` manifest
 - Plugin files under `plugins/<name>/` — self-contained and independently deployable
-- Skills, agents, hooks auto-discovered from standard directories
+- Skills, agents auto-discovered from standard directories
 - Code conventions follow coding-plans-statusline project patterns (TypeScript ESM, single quotes, 4-space indent)

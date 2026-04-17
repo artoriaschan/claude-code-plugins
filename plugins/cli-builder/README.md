@@ -18,13 +18,6 @@ CLI tool builder plugin for Claude Code — TypeScript CLI project scaffolding, 
 |-------|---------|
 | `cli-validator` | Automatically validates generated code against conventions |
 
-### Hooks
-
-| Event | Purpose |
-|-------|---------|
-| PostToolUse (Write/Edit) | Check .ts files for convention violations |
-| SubagentStop | Verify generated code follows conventions |
-
 ## Settings
 
 Configure defaults in `~/.claude/plugins/cli-builder.local.md`:

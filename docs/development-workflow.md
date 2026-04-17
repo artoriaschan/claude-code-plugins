@@ -3,7 +3,7 @@
 ## Creating a New Plugin
 
 1. Create directory under `plugins/<name>/`
-2. Add skills, agents, hooks as needed
+2. Add skills, agents as needed
 3. Register component paths in `.claude-plugin/plugin.json`
 4. Test with `cc --plugin-dir /home/artorias/workspaces/person/claude-code-plugins`
 
@@ -21,12 +21,6 @@
 2. Write frontmatter with description and capabilities
 3. Write system prompt with trigger conditions and output format
 
-## Creating a New Hook
-
-1. Add hook entry to `plugins/<plugin>/hooks/hooks.json`
-2. Choose event type (PostToolUse, SubagentStop, etc.)
-3. Write prompt for prompt-based hooks, or script path for command-based hooks
-
 ## Testing
 
 ```bash
@@ -34,5 +28,4 @@
 cc --plugin-dir /home/artorias/workspaces/person/claude-code-plugins
 
 # Test a skill by asking something that should trigger it
-# Test hooks by making edits to files
 ```

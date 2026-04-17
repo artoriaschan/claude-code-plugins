@@ -35,7 +35,7 @@ claude plugin install github:artoriaschan/claude-code-dev-plugins
 
 1. Create directory under `plugins/<name>/`
 2. Create `.claude-plugin/plugin.json` manifest
-3. Add skills, agents, hooks as needed
+3. Add skills, agents as needed
 4. Register in [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json)
 
 See [docs/development-workflow.md](docs/development-workflow.md) for detailed workflow.

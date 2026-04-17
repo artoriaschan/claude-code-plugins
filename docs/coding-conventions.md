@@ -38,7 +38,7 @@ The `code-style` plugin enforces style rules during AI code generation and editi
 
 ### File Size Limits
 
-- Maximum 800 lines per file (enforced by PreToolUse hook)
+- Maximum 800 lines per file
 - Functions under 50 lines
 - Extract utilities and split modules proactively
 
@@ -58,14 +58,3 @@ The `code-style` plugin enforces style rules during AI code generation and editi
 - React/Vue: Error Boundary required
 - Never expose sensitive info in errors
 - Logging: structured, pino for Node.js, none for frontend
-
-### Auto-Formatting Hooks
-
-After AI writes code, these run automatically:
-
-1. **Prettier** — format TS/JS/SCSS files
-2. **ESLint** — fix lint issues in TS/JS
-3. **stylelint** — fix SCSS issues (fallback to Prettier)
-4. **tsc** — type-check TS files
-
-All hooks use `|| true` to fail gracefully without blocking AI work.

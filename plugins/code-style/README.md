@@ -6,7 +6,6 @@ Enforce personal coding style conventions for AI-generated code across TypeScrip
 
 - **Rules** - Always-loaded coding style rules for naming, file organization, comments, and error handling
 - **Skills** - Detailed style guides with "good vs bad" examples, triggered automatically or manually
-- **Hooks** - Automatic formatting and style checking after AI writes code
 - **Agent** - Code style reviewer for deep review before commits
 
 ## Installation
@@ -28,13 +27,7 @@ ln -s "$(pwd)/rules" ~/.claude/rules/code-style
 
 ### 2. Auto-Discovery
 
-Skills, Hooks, and Agents are auto-discovered by Claude Code from the plugin directory. No manual setup needed.
-
-## Prerequisites
-
-- `eslint` and `prettier` for TypeScript/JavaScript formatting hooks
-- `stylelint` or `prettier` for SCSS formatting hooks
-- `tsc` for type checking hooks
+Skills and Agents are auto-discovered by Claude Code from the plugin directory. No manual setup needed.
 
 ## Rules Structure
 
@@ -47,10 +40,9 @@ rules/
 │   └── git-commit.md    # Conventional Commits, AI commit rules
 ├── typescript/          # TypeScript/JavaScript rules
 │   ├── coding-style.md  # Types, imports, file structure
-│   ├── patterns.md      # TS patterns
-│   └── hooks.md         # TS tool hooks
+│   └── patterns.md      # TS patterns
 ├── react/               # React rules
-│   ├── coding-style.md  # Components, hooks, error boundaries
+│   ├── coding-style.md  # Components, error boundaries
 │   └── patterns.md      # React patterns
 ├── vue/                 # Vue rules
 │   ├── coding-style.md  # Components, composition API

@@ -17,8 +17,6 @@ plugins/<name>/
 │       └── scripts/       # Utility scripts
 ├── agents/                # Subagent definitions
 │   └── <agent-name>.md    # Agent with frontmatter + system prompt
-├── hooks/
-│   └── hooks.json         # Event handler configuration
 └── rules/                 # Coding style rules (optional)
     └── <language>/
         └── *.md           # Rules files
@@ -37,13 +35,12 @@ Each plugin has its own manifest at `plugins/<name>/.claude-plugin/plugin.json`:
 }
 ```
 
-Skills, agents, and hooks are **auto-discovered** from standard directories:
+Skills and agents are **auto-discovered** from standard directories:
 
 | Component | Auto-discovery path |
 |-----------|---------------------|
 | Skills | `plugins/<name>/skills/<skill-name>/SKILL.md` |
 | Agents | `plugins/<name>/agents/<agent-name>.md` |
-| Hooks | `plugins/<name>/hooks/hooks.json` |
 
 ### Manifest Fields
 
@@ -55,7 +52,6 @@ Skills, agents, and hooks are **auto-discovered** from standard directories:
 | `author` | No | Author info |
 | `skills` | No | Relative path to skills directory (overrides auto-discovery) |
 | `agents` | No | Relative path or array of agent paths (overrides auto-discovery) |
-| `hooks` | No | Path to hooks.json (overrides auto-discovery) |
 
 ### Path Rules
 
@@ -90,21 +86,6 @@ capabilities:
 ---
 ```
 
-## Hooks Format (hooks.json)
-
-```json
-{
-  "PostToolUse": [{
-    "matcher": "Write|Edit",
-    "hooks": [{ "type": "prompt", "prompt": "Instructions..." }]
-  }]
-}
-```
-
-### Available Events
-
-`PreToolUse`, `PostToolUse`, `Stop`, `SubagentStop`, `SessionStart`, `SessionEnd`, `UserPromptSubmit`, `PreCompact`, `Notification`
-
 ## Rules (Optional)
 
 Plugins can ship coding style rules under `plugins/<name>/rules/`. These must be symlinked to `~/.claude/rules/` for Claude Code to auto-load them:
@@ -125,7 +106,6 @@ rules/
 ├── <language>/          # Language-specific rules
 │   ├── coding-style.md  # Language conventions
 │   ├── patterns.md      # Language patterns
-│   └── hooks.md         # Language-specific hooks
 └── <framework>/         # Framework-specific rules
     ├── coding-style.md
     └── patterns.md
